@@ -1,106 +1,92 @@
-// class House {
-//   //   private street: string;
-//   private tenants: string[] = [];
+// type AdminType = {
+//   type: "admin";
+//   name: string;
+// };
 
-//   constructor(private street: string) {
-//     this.street = street;
-//   }
+// type UserType = {
+//   type: "user";
+//   name: string;
+// };
 
-//   public showAddress(this: House) {
-//     console.log("Address: " + this.street);
-//     return this.street;
-//   }
-
-//   public addTenants(tenant: string) {
-//     this.tenants.push(tenant);
-//   }
-
-//   public showTenants() {
-//     console.log(this.tenants);
-//   }
-// }
-
-// const house = new House("Wall Street");
-// console.log(house);
-// house.addTenants("Max");
-// house.addTenants("Denchik");
-
-// console.log(house.showTenants());
-
-// class House {
-//   constructor(private type: string, private street: string) {}
-// }
-
-// const house = new House("stone", "Wall Street");
-// console.log(house);
-
-// class StoneHouse extends House {
-//   constructor(street: string) {
-//     super("stone", street);
+// function checkUser(name: string, type: "admin"): AdminType;
+// function checkUser(name: string, type: "user"): UserType;
+// function checkUser(name: string, type: "admin" | "user") {
+//   if (type === "admin") {
+//     return {
+//       name,
+//       type: "admin",
+//     };
+//   } else {
+//     return {
+//       name,
+//       type: "user",
+//     };
 //   }
 // }
 
-// const stoneHouse = new StoneHouse("Wall Street");
-// console.log(stoneHouse);
+// const user = checkUser("Nikita", "user");
+// const admin = checkUser("Tonya", "admin");
+// console.log(checkUser("Nikita", "user"));
+// console.log(checkUser("Tonya", "admin"));
+// ======================================================
+// abstract class Guy {
+//   constructor(public name: string) {}
+// }
 
-/**
- * showAddress, showType, addTenant, showTenants
- */
+// class Good extends Guy {
+//   advice() {
+//     console.log(this.name);
 
-// class House {
-//   private tenants: string[] = [];
-
-//   constructor(private readonly type: string, private street: string) {}
-
-//   public showAddress(this: House) {
-//     console.log(`Address ${this.street}`);
-//     return this.street;
-//   }
-
-//   public showType() {
-//     console.log(`Type ${this.type}`);
-//     return this.type;
-//   }
-
-//   public addTenant(tenant: string) {
-//     this.tenants.push(tenant);
-//   }
-
-//   public showTenants() {
-//     console.log(this.tenants);
-//     return this.tenants;
+//     console.log("this is advice");
 //   }
 // }
 
-// class StoneHouse extends House {
-//   private mainInStoneHouse: string;
-
-//   constructor(street: string, generalTenant: string) {
-//     super("stone", street);
-
-//     this.mainInStoneHouse = generalTenant;
-//     this.addTenant(generalTenant);
-//   }
-
-//   public showTenantStoneHouse() {
-//     console.log(`GeneralTenant: ${this.mainInStoneHouse}`);
-
-//     super.showTenants();
+// class Bad extends Guy {
+//   insult() {
+//     console.log(this.name);
+//     console.log("this is insult");
 //   }
 // }
 
-// const house = new House("stone", "Wall Street");
+// function guys(user: Guy) {
+//   user.name;
+//   console.log("user.name ", user.name);
 
-// console.log(house);
-// house.showType();
-// house.addTenant("Max");
-// house.addTenant("Den");
-// house.showTenants();
+//   if (user instanceof Good) {
+//     user.advice();
+//   }
+//   if (user instanceof Bad) {
+//     user.insult();
+//   }
+// }
 
-// const stoneHouse = new StoneHouse("Kalinina", "Vasyl");
-// stoneHouse.addTenant("Max");
-// stoneHouse.addTenant("Den");
-// stoneHouse.showType();
-// stoneHouse.showAddress();
+// const good = new Good("Dan");
+// const bad = new Bad("Max");
+// console.log(guys(bad));
+// ======================================================
+// const arr: Array<number | string> = [];
+// arr.push(2);
+// console.log(arr);
+// arr.push("qweqwe");
+// console.log(arr);
+// // arr.push(true);
+// ======================================================
+// const obj1 = {
+//   a: 1,
+//   name: {
+//     first: "max",
+//     last: "kjdfhgjkds",
+//   },
+// };
+// const obj2 = { b: 5 };
+// const obj3 = { c: 10 };
+// const qwe = Object.assign({}, obj1, obj2, obj3);
 
-// console.log(stoneHouse.showTenantStoneHouse());
+// console.log(obj1 === qwe);
+
+// console.log("obj1 ", obj1);
+// console.log("obj2 ", obj2);
+// console.log("obj3 ", obj3);
+
+// console.log(qwe);
+// ======================================================
