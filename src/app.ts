@@ -1,92 +1,167 @@
-// type AdminType = {
-//   type: "admin";
-//   name: string;
+// ======================3/1======================
+// interface IApartment {
+//   imgUrl: string;
+//   descr: string;
+//   rating: number;
+//   price: number;
+//   tags: string[];
+// }
+
+// type apartmentType = {
+//   imgUrl: string;
+//   descr: string;
+//   rating: number | string;
+//   price: number;
+//   tags?: string[];
 // };
 
-// type UserType = {
-//   type: "user";
-//   name: string;
+// const apt1: apartmentType = {
+//   imgUrl: "https://via.placeholder.com/640x480",
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+//   tags: ["premium", "promoted", "top"],
 // };
 
-// function checkUser(name: string, type: "admin"): AdminType;
-// function checkUser(name: string, type: "user"): UserType;
-// function checkUser(name: string, type: "admin" | "user") {
-//   if (type === "admin") {
-//     return {
-//       name,
-//       type: "admin",
-//     };
-//   } else {
-//     return {
-//       name,
-//       type: "user",
-//     };
-//   }
+// const apt2: apartmentType = {
+//   imgUrl: "https://via.placeholder.com/640x480",
+//   descr: "Spacious apartment in the city center",
+//   rating: "4",
+//   price: 2153,
+// };
+
+// ======================3/2======================
+
+// interface IApartment {
+//   imgUrl: string;
+//   descr: string;
+//   rating: number;
+//   price: number;
+//   tags: string[];
+//   owner: {
+//     name: string;
+//     phone: string;
+//     email: string;
+//   };
 // }
 
-// const user = checkUser("Nikita", "user");
-// const admin = checkUser("Tonya", "admin");
-// console.log(checkUser("Nikita", "user"));
-// console.log(checkUser("Tonya", "admin"));
-// ======================================================
-// abstract class Guy {
-//   constructor(public name: string) {}
-// }
+// type apartmentType = {
+//   imgUrl: string;
+//   descr: string;
+//   rating: number;
+//   price: number;
+//   tags: string[];
+//   owner: {
+//     firstName: string;
+//     lastName: string;
+//     phone: string;
+//     email: string;
+//   };
+// };
 
-// class Good extends Guy {
-//   advice() {
-//     console.log(this.name);
-
-//     console.log("this is advice");
-//   }
-// }
-
-// class Bad extends Guy {
-//   insult() {
-//     console.log(this.name);
-//     console.log("this is insult");
-//   }
-// }
-
-// function guys(user: Guy) {
-//   user.name;
-//   console.log("user.name ", user.name);
-
-//   if (user instanceof Good) {
-//     user.advice();
-//   }
-//   if (user instanceof Bad) {
-//     user.insult();
-//   }
-// }
-
-// const good = new Good("Dan");
-// const bad = new Bad("Max");
-// console.log(guys(bad));
-// ======================================================
-// const arr: Array<number | string> = [];
-// arr.push(2);
-// console.log(arr);
-// arr.push("qweqwe");
-// console.log(arr);
-// // arr.push(true);
-// ======================================================
-// const obj1 = {
-//   a: 1,
-//   name: {
-//     first: "max",
-//     last: "kjdfhgjkds",
+// const apartment1: apartmentType = {
+//   imgUrl: "https://via.placeholder.com/640x480",
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+//   tags: ["premium", "promoted", "top"],
+//   owner: {
+//     firstName: "Henry",
+//     lastName: "Pupkin",
+//     phone: "982-126-1588",
+//     email: "henry.carter@aptmail.com",
 //   },
 // };
-// const obj2 = { b: 5 };
-// const obj3 = { c: 10 };
-// const qwe = Object.assign({}, obj1, obj2, obj3);
 
-// console.log(obj1 === qwe);
+// const changeOwner = <T extends apartmentType, U extends string>(
+//   apartment: T,
+//   name: U
+// ): T => {
+//   console.log(111);
 
-// console.log("obj1 ", obj1);
-// console.log("obj2 ", obj2);
-// console.log("obj3 ", obj3);
+//   if ("firstName" in apartment.owner) {
+//     console.log(222);
+//     apartment.owner.firstName = name;
+//     console.log(apartment.owner.firstName);
+//   }
+//   console.log(333);
 
-// console.log(qwe);
-// ======================================================
+//   return apartment;
+// };
+
+// console.log(changeOwner(apartment1, "Max"));
+
+// ======================3/3======================
+
+// type apartmentType = {
+//   id: string | number;
+//   imgUrl: string;
+//   descr: string;
+//   rating: number;
+//   price: number;
+//   tags: string[];
+//   square?: number;
+// };
+
+// const apartment: apartmentType = {
+//   id: 1,
+//   imgUrl: "https://via.placeholder.com/640x480",
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+//   tags: ["premium", "promoted", "top"],
+// };
+
+// ======================3/4======================
+// interface IApartment {
+//   imgUrl: string;
+//   descr: string;
+//   rating: 4;
+//   price: 2153;
+//   category: "cheap" | "medium cost" | "expensive";
+//   tags: string[];
+//   owner: {
+//     name: string;
+//     phone: string;
+//     email?: string;
+//   };
+// }
+
+// const apartment1: IApartment = {
+//   imgUrl: "https://via.placeholder.com/640x480",
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+//   category: "medium cost",
+//   tags: ["premium", "promoted", "top"],
+//   owner: {
+//     name: "Henry",
+//     phone: "982-126-1588",
+//     // email: "qweqwe@qwe.com",
+//   },
+// };
+
+// const updateApartment = <
+//   T extends IApartment,
+//   U extends string,
+//   V extends string
+// >(
+//   apartment: T,
+//   tag: U,
+//   email: V
+// ): T => {
+//   if ("owner" in apartment) {
+//     // apartment.owner.email = email;
+//     apartment.owner.email = email;
+//   }
+//   if ("tags" in apartment) {
+//     apartment.tags.push(tag);
+//     apartment.tags.shift();
+//   }
+
+//   return apartment;
+// };
+
+// console.log(updateApartment(apartment1, "trusted", "henry.carter@aptmail.com"));
+
+// ======================3/5======================
