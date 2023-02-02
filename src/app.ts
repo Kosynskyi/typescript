@@ -245,31 +245,32 @@
 // }
 
 // ======================3/8======================
-const tweets = [
-  { id: "000", likes: 5, tags: ["js", "nodejs"] },
-  { id: "001", likes: 2, tags: ["html", "css"] },
-  { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
-  { id: "003", likes: 8, tags: ["css", "react"] },
-  { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
-];
+// const tweets = [
+//   { id: "000", likes: 5, tags: ["js", "nodejs"] },
+//   { id: "001", likes: 2, tags: ["html", "css"] },
+//   { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+//   { id: "003", likes: 8, tags: ["css", "react"] },
+//   { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+// ];
 
-interface ITags {
-  id: string;
-  likes: number;
-  tags: string[];
-}
+// interface ITags {
+//   id: string;
+//   likes: number;
+//   tags: string[];
+// }
 
-interface ITagsObj {
-  [key: string]: number;
-}
+// interface ITagsObj {
+//   [key: string]: number;
+// }
 
-const arrOfTags = tweets.reduce(
-  (acc: string[], item: ITags): string[] => [...acc, ...item.tags],
-  []
-);
-console.log(arrOfTags);
-const tagsObj = arrOfTags.reduce((acc: ITagsObj, item: string): ITagsObj => {
-  acc[item] ? (acc[item] += 1) : (acc[item] = 1);
-  return acc;
-}, {});
-console.log(tagsObj);
+// const arrOfTags = tweets.reduce(
+//   (acc: string[], item: ITags): string[] => [...acc, ...item.tags],
+//   []
+// );
+// console.log(arrOfTags);
+// const tagsObj = arrOfTags.reduce((acc: ITagsObj, item: string): ITagsObj => {
+//   acc[item] ? (acc[item] += 1) : (acc[item] = 1);
+//   return acc;
+// }, {});
+// console.log(tagsObj);
+// ======================3/9======================
