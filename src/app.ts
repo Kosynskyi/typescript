@@ -165,3 +165,111 @@
 // console.log(updateApartment(apartment1, "trusted", "henry.carter@aptmail.com"));
 
 // ======================3/5======================
+
+// type apartmentType = {
+//   descr: string;
+//   rating: number;
+//   price: number;
+// };
+
+// const apartment: apartmentType = {
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+// };
+
+// const foo = <T extends apartmentType>(apartment: T): void => {
+//   console.log(apartment);
+//   // ==================Object.keys and Object.values==================
+//   //   const objKeys = Object.keys(apartment);
+//   //   console.log(objKeys);
+//   //   const objValues = Object.values(apartment);
+//   //   console.log(objValues);
+//   // =====================for in=====================
+//   const keys: string[] = [];
+//   const values: any[] = [];
+//   for (let key in apartment) {
+//     keys.push(key);
+//     values.push(apartment[key]);
+//   }
+
+//   console.log(keys);
+//   console.log(values);
+// };
+
+// foo(apartment);
+
+// ======================3/6======================
+// type advertType = {
+//   service: string;
+//   [x: string]: any;
+// };
+
+// const keys: string[] = [];
+// const values: string[] = [];
+
+// const advert: advertType = {
+//   service: "apt",
+//   sex: "man",
+// };
+
+// const apartment: advertType = Object.create(advert);
+
+// apartment.descr = "Spacious apartment in the city center";
+// apartment.rating = 4;
+// apartment.price = 2153;
+
+// for (const key in apartment) {
+//   if (apartment.hasOwnProperty(key)) {
+//     keys.push(key);
+//     values.push(apartment[key]);
+//   }
+// }
+
+// console.log(keys);
+// console.log(values);
+
+// ======================3/7======================
+// function countProps(object) {
+//   let propCount = 0;
+//   // Change code below this line
+
+//   for (const key in object) {
+//     if (object.hasOwnProperty(key)) {
+//       propCount += 1;
+//     }
+//   }
+
+//   // Change code above this line
+//   return propCount;
+// }
+
+// ======================3/8======================
+const tweets = [
+  { id: "000", likes: 5, tags: ["js", "nodejs"] },
+  { id: "001", likes: 2, tags: ["html", "css"] },
+  { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+  { id: "003", likes: 8, tags: ["css", "react"] },
+  { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+];
+
+interface ITags {
+  id: string;
+  likes: number;
+  tags: string[];
+}
+
+interface ITagsObj {
+  [key: string]: number;
+}
+
+const arrOfTags = tweets.reduce(
+  (acc: string[], item: ITags): string[] => [...acc, ...item.tags],
+  []
+);
+console.log(arrOfTags);
+const tagsObj = arrOfTags.reduce((acc: ITagsObj, item: string): ITagsObj => {
+  acc[item] ? (acc[item] += 1) : (acc[item] = 1);
+  return acc;
+}, {});
+console.log(tagsObj);
